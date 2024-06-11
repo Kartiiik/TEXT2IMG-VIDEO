@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        .result {
+            margin-bottom: 20px;
+        }
+        .result img {
+            width: 80%; /* Adjust width as needed */
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .result video {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <h2>{{ media_type.capitalize() }} Results:</h2>
+    {% if media_type == 'image' %}
+        {% for result in results %}
+            <div class="result">
+                <img src="{{ result.largeImageURL }}" alt="{{ result.tags }}">
+                <p>Likes: {{ result.likes }}</p>
+                <p>Downloads: {{ result.downloads }}</p>
+                <a href="{{ result.largeImageURL }}" download>Download</a>
+            </div>
+        {% endfor %}
+    {% elif media_type == 'video' %}
+        {% for result in results %}
+            <div class="result">
+                <video controls>
+                    <source src="{{ result.videos.large.url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>Likes: {{ result.likes }}</p>
+                <p>Downloads: {{ result.downloads }}</p>
+                <a href="{{ result.videos.large.url }}" download>Download</a>
+            </div>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
+
