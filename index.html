@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+<body>
+    <h1>Search</h1>
+    <form action="/search" method="POST">
+        <label for="query">Search Query:</label>
+        <input type="text" name="query" id="query" placeholder="Enter your search query">
+        <br><br>
+        <label for="type">Search Type:</label>
+        <select name="type" id="type">
+            <option value="image">Image</option>
+            <option value="video">Video</option>
+        </select>
+        <br><br>
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>
